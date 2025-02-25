@@ -1,0 +1,538 @@
+{
+  "namespace": "default",
+  "name": "generated",
+  "description": "",
+  "version": "0.0.1",
+  "methods": [
+    {
+      "name": "movieCount",
+      "namespace": "default",
+      "pathname": "movieCount",
+      "description": "",
+      "params": [],
+      "returns": [
+        {
+          "name": "",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "details": {
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            "description": "An integer. You are recommended to use a JSON string. A JSON number can be used for values up to the safe maximum."
+          }
+        }
+      ],
+      "details": {
+        "stateMutability": "view"
+      }
+    },
+    {
+      "name": "movies",
+      "namespace": "default",
+      "pathname": "movies",
+      "description": "",
+      "params": [
+        {
+          "name": "",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "details": {
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            "description": "An integer. You are recommended to use a JSON string. A JSON number can be used for values up to the safe maximum."
+          }
+        }
+      ],
+      "returns": [
+        {
+          "name": "title",
+          "schema": {
+            "type": "string",
+            "details": {
+              "type": "string",
+              "internalType": "string"
+            }
+          }
+        },
+        {
+          "name": "ipfsHash",
+          "schema": {
+            "type": "string",
+            "details": {
+              "type": "string",
+              "internalType": "string"
+            }
+          }
+        },
+        {
+          "name": "averageRating",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "details": {
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            "description": "An integer. You are recommended to use a JSON string. A JSON number can be used for values up to the safe maximum."
+          }
+        },
+        {
+          "name": "totalRatings",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "details": {
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            "description": "An integer. You are recommended to use a JSON string. A JSON number can be used for values up to the safe maximum."
+          }
+        },
+        {
+          "name": "numberOfRatings",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "details": {
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            "description": "An integer. You are recommended to use a JSON string. A JSON number can be used for values up to the safe maximum."
+          }
+        }
+      ],
+      "details": {
+        "stateMutability": "view"
+      }
+    },
+    {
+      "name": "owner",
+      "namespace": "default",
+      "pathname": "owner",
+      "description": "",
+      "params": [],
+      "returns": [
+        {
+          "name": "",
+          "schema": {
+            "type": "string",
+            "details": {
+              "type": "address",
+              "internalType": "address"
+            },
+            "description": "A hex encoded set of bytes, with an optional '0x' prefix"
+          }
+        }
+      ],
+      "details": {
+        "stateMutability": "view"
+      }
+    },
+    {
+      "name": "rateMovie",
+      "namespace": "default",
+      "pathname": "rateMovie",
+      "description": "",
+      "params": [
+        {
+          "name": "_movieId",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "details": {
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            "description": "An integer. You are recommended to use a JSON string. A JSON number can be used for values up to the safe maximum."
+          }
+        },
+        {
+          "name": "_rating",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "details": {
+              "type": "uint8",
+              "internalType": "uint8"
+            },
+            "description": "An integer. You are recommended to use a JSON string. A JSON number can be used for values up to the safe maximum."
+          }
+        }
+      ],
+      "returns": [],
+      "details": {
+        "stateMutability": "nonpayable"
+      }
+    },
+    {
+      "name": "userReviews",
+      "namespace": "default",
+      "pathname": "userReviews",
+      "description": "",
+      "params": [
+        {
+          "name": "",
+          "schema": {
+            "type": "string",
+            "details": {
+              "type": "address",
+              "internalType": "address"
+            },
+            "description": "A hex encoded set of bytes, with an optional '0x' prefix"
+          }
+        },
+        {
+          "name": "",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "details": {
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            "description": "An integer. You are recommended to use a JSON string. A JSON number can be used for values up to the safe maximum."
+          }
+        }
+      ],
+      "returns": [
+        {
+          "name": "movieId",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "details": {
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            "description": "An integer. You are recommended to use a JSON string. A JSON number can be used for values up to the safe maximum."
+          }
+        },
+        {
+          "name": "rating",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "details": {
+              "type": "uint8",
+              "internalType": "uint8"
+            },
+            "description": "An integer. You are recommended to use a JSON string. A JSON number can be used for values up to the safe maximum."
+          }
+        },
+        {
+          "name": "hasRated",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "boolean"
+              }
+            ],
+            "details": {
+              "type": "bool",
+              "internalType": "bool"
+            },
+            "description": "A boolean. You can use a boolean or a string true/false as input"
+          }
+        }
+      ],
+      "details": {
+        "stateMutability": "view"
+      }
+    },
+    {
+      "name": "addMovie",
+      "namespace": "default",
+      "pathname": "addMovie",
+      "description": "",
+      "params": [
+        {
+          "name": "_title",
+          "schema": {
+            "type": "string",
+            "details": {
+              "type": "string",
+              "internalType": "string"
+            }
+          }
+        },
+        {
+          "name": "_ipfsHash",
+          "schema": {
+            "type": "string",
+            "details": {
+              "type": "string",
+              "internalType": "string"
+            }
+          }
+        }
+      ],
+      "returns": [],
+      "details": {
+        "stateMutability": "nonpayable"
+      }
+    },
+    {
+      "name": "getAverageRating",
+      "namespace": "default",
+      "pathname": "getAverageRating",
+      "description": "",
+      "params": [
+        {
+          "name": "_movieId",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "details": {
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            "description": "An integer. You are recommended to use a JSON string. A JSON number can be used for values up to the safe maximum."
+          }
+        }
+      ],
+      "returns": [
+        {
+          "name": "",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "details": {
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            "description": "An integer. You are recommended to use a JSON string. A JSON number can be used for values up to the safe maximum."
+          }
+        }
+      ],
+      "details": {
+        "stateMutability": "view"
+      }
+    },
+    {
+      "name": "getMovie",
+      "namespace": "default",
+      "pathname": "getMovie",
+      "description": "",
+      "params": [
+        {
+          "name": "_movieId",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "details": {
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            "description": "An integer. You are recommended to use a JSON string. A JSON number can be used for values up to the safe maximum."
+          }
+        }
+      ],
+      "returns": [
+        {
+          "name": "",
+          "schema": {
+            "type": "string",
+            "details": {
+              "type": "string",
+              "internalType": "string"
+            }
+          }
+        },
+        {
+          "name": "",
+          "schema": {
+            "type": "string",
+            "details": {
+              "type": "string",
+              "internalType": "string"
+            }
+          }
+        },
+        {
+          "name": "",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "details": {
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            "description": "An integer. You are recommended to use a JSON string. A JSON number can be used for values up to the safe maximum."
+          }
+        },
+        {
+          "name": "",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "details": {
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            "description": "An integer. You are recommended to use a JSON string. A JSON number can be used for values up to the safe maximum."
+          }
+        },
+        {
+          "name": "",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "details": {
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            "description": "An integer. You are recommended to use a JSON string. A JSON number can be used for values up to the safe maximum."
+          }
+        }
+      ],
+      "details": {
+        "stateMutability": "view"
+      }
+    }
+  ],
+  "events": [
+    {
+      "namespace": "default",
+      "pathname": "Changed",
+      "signature": "",
+      "name": "Changed",
+      "description": "",
+      "params": [
+        {
+          "name": "from",
+          "schema": {
+            "type": "string",
+            "details": {
+              "type": "address",
+              "internalType": "address",
+              "indexed": true
+            },
+            "description": "A hex encoded set of bytes, with an optional '0x' prefix"
+          }
+        },
+        {
+          "name": "x",
+          "schema": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "details": {
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            "description": "An integer. You are recommended to use a JSON string. A JSON number can be used for values up to the safe maximum."
+          }
+        }
+      ]
+    }
+  ],
+  "published": false
+}
