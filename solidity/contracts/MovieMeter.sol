@@ -4,7 +4,7 @@ pragma solidity ^0.8.17;
 contract MovieMeter {
     struct Movie {
         string title;
-        string ipfsHash; // IPFS hash for Metadata
+        string ipfsHash; // IPFS hash for poster/image
         uint256 averageRating;
         uint256 totalRatings;
         uint256 numberOfRatings;
@@ -19,6 +19,7 @@ contract MovieMeter {
     address public owner;
     mapping(uint256 => Movie) public movies;
     mapping(address => mapping(uint256 => UserReview)) public userReviews;
+    mapping(string => uint256) public titleToMovieId;
     uint256 public movieCount;
 
     constructor() {
@@ -30,13 +31,16 @@ contract MovieMeter {
         _;
     }
 
-    // Add a new movie
+    // Add new movie - Assumes movie names are unique
+    // TODO: Use may be use a year and name combination to better hash the movies
     function addMovie(string memory _title, string memory _ipfsHash) public onlyOwner {
+        require(titleToMovieId[_title]==0, "Movie with this title already exists.");
         movieCount++;
         movies[movieCount] = Movie(_title, _ipfsHash, 0, 0, 0);
+        titleToMovieId[_title] = movieCount;
     }
 
-    // Allow users to rate a movie
+    // Allow users to rate a movie - allows overwriting previous rating
     function rateMovie(uint256 _movieId, uint8 _rating) public {
         require(_movieId > 0 && _movieId <= movieCount, "Invalid movie ID");
         require(_rating >= 1 && _rating <= 5, "Invalid rating value");
@@ -63,6 +67,7 @@ contract MovieMeter {
         }
 
         // Store the review
+        review.movieId = _movieId;
         review.rating = _rating;
         review.hasRated = true;
     }
@@ -73,12 +78,11 @@ contract MovieMeter {
         return movies[_movieId].averageRating;
     }
 
-    // Get movie details
-    function getMovie(uint256 _movieId) public view returns (string memory, string memory, uint256, uint256, uint256) {
-        require(_movieId > 0 && _movieId <= movieCount, "Invalid movie ID");
-        Movie memory movie = movies[_movieId];
-        return (movie.title, movie.ipfsHash, movie.averageRating, movie.totalRatings, movie.numberOfRatings);
+    // Get movie details - Assumes that movie names are unique
+    function getMovie(string memory _title) public view returns (uint256, string memory, uint256, uint256, uint256) {
+        uint256 movieId = titleToMovieId[_title];
+        require(movieId > 0, "Movie not found");
+        Movie memory movie = movies[movieId];
+        return (movieId, movie.ipfsHash, movie.averageRating, movie.totalRatings, movie.numberOfRatings);
     }
-
-    event Changed(address indexed from, uint256 x);
 }

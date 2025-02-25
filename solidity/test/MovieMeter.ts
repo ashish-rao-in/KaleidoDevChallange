@@ -21,8 +21,8 @@ describe("MovieMeter Contract", function () {
     await movieMeter.addMovie("Sixth Sense", "ipfsHashSS");
 
     // Get the movie details to verify it was added
-    const movie_1 = await movieMeter.getMovie(1);
-    expect(movie_1[0]).to.equal("Sixth Sense"); // Title should match
+    const movie_1 = await movieMeter.getMovie("Sixth Sense");
+    expect(movie_1[0]).to.equal(1); // Title should match
     expect(movie_1[1]).to.equal("ipfsHashSS"); // IPFS hash should match
     expect(movie_1[2]).to.equal(0); // Average rating should be 0
 
@@ -30,8 +30,8 @@ describe("MovieMeter Contract", function () {
     await movieMeter.addMovie("Star Wars", "ipfsHashSW");
 
     // Get the movie details to verify it was added
-    const movie_2 = await movieMeter.getMovie(2);
-    expect(movie_2[0]).to.equal("Star Wars"); // Title should match
+    const movie_2 = await movieMeter.getMovie("Star Wars");
+    expect(movie_2[0]).to.equal(2); // Title should match
     expect(movie_2[1]).to.equal("ipfsHashSW"); // IPFS hash should match
     expect(movie_2[2]).to.equal(0); // Average rating should be 0
   });
@@ -97,10 +97,10 @@ describe("MovieMeter Contract", function () {
     await expect(movieMeter.connect(user).rateMovie(1, 6)).to.be.revertedWith("Invalid rating value");
   });
 
-  it("Should prevent accessing invalid movie ID", async function () {
+  it("Should prevent accessing invalid movie", async function () {
     // Try to get a movie that does not exist
-    await expect(movieMeter.getMovie(999))
-      .to.be.revertedWith("Invalid movie ID");
+    await expect(movieMeter.getMovie("Abba Dabba"))
+      .to.be.revertedWith("Movie not found");
   });
 
   it("Should update the movie's total rating and number of ratings correctly", async function () {
@@ -117,7 +117,7 @@ describe("MovieMeter Contract", function () {
     expect(averageRating).to.equal(4); // (5 + 4) / 2 = 4
 
     // Verify the total ratings and number of ratings
-    const movie = await movieMeter.getMovie(1);
+    const movie = await movieMeter.getMovie("Sixth Sense");
     expect(movie[2]).to.equal(4); // Average rating should be 4
     expect(movie[3]).to.equal(9); // Total ratings should be 5 + 4 = 9
     expect(movie[4]).to.equal(2); // Number of ratings should be 2
@@ -138,7 +138,7 @@ describe("MovieMeter Contract", function () {
     expect(rating).to.equal(3); // Rating should be updated to 3
 
     // Verify the total ratings and number of ratings are correct
-    const movie = await movieMeter.getMovie(1);
+    const movie = await movieMeter.getMovie("Sixth Sense");
     expect(movie[2]).to.equal(3); // Average rating should be 3
     expect(movie[3]).to.equal(3); // Total ratings should be 3 (previous 4 + new 3)
     expect(movie[4]).to.equal(1); // Number of ratings should still be 1 (since it's an overwrite)
